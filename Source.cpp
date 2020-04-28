@@ -2,7 +2,7 @@
 
 // Copyright (c) varcredible. All rights reserved.
 
-// The name of the program: Name Company Generator
+// The name of the program: Company Name Generator
 // Verison of the program: 1.1.4
 // Langauge: English
 // Autor: Zorin Stepan 
@@ -20,9 +20,6 @@
 #include <ctime>
 #include <fstream>
 
-using std::cout;
-using std::cin;
-using std::endl;
 using std::string;
 using std::ofstream;
 
@@ -319,7 +316,10 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 
 void showMenu()
 {
-	setlocale(0, "ru");
+	using std::cout;
+	using std::cin;
+	using std::endl;
+
 	ofstream fout("NamesForCompany.txt", std::ios::app);
 	int length_name_company = 0;
 	int time_delay = 1001;
