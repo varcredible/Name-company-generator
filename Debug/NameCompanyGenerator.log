@@ -1,0 +1,11 @@
+﻿  Source.cpp
+E:\github\Software Development\C++\Consoles\задачи_на_русском\NameCompanyGenerator\NameCompanyGenerator\Source.cpp(32,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\github\Software Development\C++\Consoles\задачи_на_русском\NameCompanyGenerator\NameCompanyGenerator\Source.cpp(64,25): warning C4018: <: несоответствие типов со знаком и без знака
+E:\github\Software Development\C++\Consoles\задачи_на_русском\NameCompanyGenerator\NameCompanyGenerator\Source.cpp(95,25): warning C4018: <: несоответствие типов со знаком и без знака
+E:\github\Software Development\C++\Consoles\задачи_на_русском\NameCompanyGenerator\NameCompanyGenerator\Source.cpp(129,25): warning C4018: <: несоответствие типов со знаком и без знака
+E:\github\Software Development\C++\Consoles\задачи_на_русском\NameCompanyGenerator\NameCompanyGenerator\Source.cpp(160,25): warning C4018: <: несоответствие типов со знаком и без знака
+E:\github\Software Development\C++\Consoles\задачи_на_русском\NameCompanyGenerator\NameCompanyGenerator\Source.cpp(191,25): warning C4018: <: несоответствие типов со знаком и без знака
+E:\github\Software Development\C++\Consoles\задачи_на_русском\NameCompanyGenerator\NameCompanyGenerator\Source.cpp(228,25): warning C4018: <: несоответствие типов со знаком и без знака
+E:\github\Software Development\C++\Consoles\задачи_на_русском\NameCompanyGenerator\NameCompanyGenerator\Source.cpp(270,25): warning C4018: <: несоответствие типов со знаком и без знака
+E:\github\Software Development\C++\Consoles\задачи_на_русском\NameCompanyGenerator\NameCompanyGenerator\Source.cpp(307,25): warning C4018: <: несоответствие типов со знаком и без знака
+  NameCompanyGenerator.vcxproj -> E:\github\Software Development\C++\Consoles\задачи_на_русском\NameCompanyGenerator\Debug\NameCompanyGenerator.exe
