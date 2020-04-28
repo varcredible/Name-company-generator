@@ -320,7 +320,7 @@ void showMenu()
 	int* ptr_length_name_company = &length_name_company;
 	std::cout << "Enter a length the name company: ";
 	std::cin >> length_name_company;
-	std::cout << "\nThe program process started successfully.\nGeneration occurs once per second.\nUpload the file name is \"NamesForCompany.txt\".";
+	std::cout << "\nThe program process has started successfully.\nGeneration occurs once per second.\nNames are uploading to the file name is \"NamesForCompany.txt\".";
 	startProcess(ptr_length_name_company, fout);
 
 	fout.close();
