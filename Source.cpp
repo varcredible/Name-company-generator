@@ -2,8 +2,8 @@
 
 // Copyright (c) varcredible. All rights reserved.
 
-// The name of the program: Company Name Generator
-// Verison of the program: 1.1.3
+// The name of the program: Name Company Generator
+// Verison of the program: 1.1.4
 // Langauge: English
 // Autor: Zorin Stepan 
 // Nickname: varcredible
@@ -32,13 +32,6 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 	
 	char value = ' ';
 
-	char english_alphabet[26] =
-	{ 'a', 'b', 'c', 'd', 'e',
-	  'f', 'g', 'h', 'i', 'j',
-	  'k', 'l', 'm', 'n', 'o',
-	  'p', 'q', 'r', 's', 't',
-	  'u', 'v', 'w', 'x', 'y', 'z' };
-
 	char english_alphabet_consonants[6] =
 	{ 'a', 'e', 'i',
 	  'o', 'u', 'y',
@@ -61,22 +54,53 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 
 		if (LENGTH_NAME_COMPANY < 7)
 		{
-			for (size_t i = 0; i < LENGTH_NAME_COMPANY; i++) 
+			for (size_t i = 0; i < LENGTH_NAME_COMPANY; i++) // THE 1st RULE: If the name company begins with a vowel
 			{
-				if (i == 0 && temp == 0) 
+				if (i == 0 && temp == 0) // any first vowel letter
 				{
-					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
+					generated_name_company[i] = toupper(english_alphabet_vowels[rand() % 20]);
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i > 0 && temp < 2) 
+				else if (i > 0 && temp < 2) // any 2 consonant letters
+				{
+					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
+					fout << generated_name_company[i] << "";
+					temp++;
+				}
+
+				else if (i > 0 && temp == 2) // any vowel letter
+				{
+					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
+					fout << generated_name_company[i] << "";
+					temp = 0;
+				}
+
+				else
+				{
+					continue;
+				}
+			}
+
+			fout << " | ";
+			temp = 0;
+
+			for (size_t i = 0; i < LENGTH_NAME_COMPANY; i++) // THE 2nd RULE: If the name company begins with a consonant letter
+			{
+				if (i == 0 && temp == 0) // any first consonant letter
+				{
+					generated_name_company[i] = toupper(english_alphabet_consonants[rand() % 6]);
+					fout << generated_name_company[i] << "";
+				}
+
+				else if (i > 0 && temp < 2) // any 2 consonant letter
 				{
 					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
 					fout << generated_name_company[i] << "";
 					temp++;
 				}
 
-				else if (i > 0 && temp == 2) 
+				else if (i > 0 && temp == 2) // any 2 consonant letters
 				{
 					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
 					fout << generated_name_company[i] << "";
@@ -89,29 +113,33 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 				}
 			}
 
+			fout << " | ";
 			temp = 0;
-			fout << "  |  ";
 
-			for (size_t i = 0; i < LENGTH_NAME_COMPANY; i++) 
+			for (size_t i = 0; i < LENGTH_NAME_COMPANY; i++) // THE 3th RULE: If the name company begins with a vowel letter
 			{
-				if (i == 0 && temp == 0) 
+				if (i == 0) // any first vowel letter
+				{
+					generated_name_company[i] = toupper(english_alphabet_vowels[rand() % 20]);
+					fout << generated_name_company[i] << "";
+				}
+
+				else if ((i > 0) && (i < 3)) // any 2 consonant letter
 				{
 					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i > 0 && temp < 2) 
+				else if ((i > 2) && (i < 5)) // any 2 vowel letters
 				{
 					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
 					fout << generated_name_company[i] << "";
-					temp++;
 				}
 
-				else if (i > 0 && temp == 2) 
+				else if (i == (LENGTH_NAME_COMPANY - 1)) // any consonant letter
 				{
 					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
 					fout << generated_name_company[i] << "";
-					temp = 0;
 				}
 
 				else
@@ -119,76 +147,11 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 					continue;
 				}
 			}
-
-			fout << "\n";
-			temp = 0;
 		}
 
-		else if (LENGTH_NAME_COMPANY > 6)
+		else if (LENGTH_NAME_COMPANY >= 7)
 		{
-			for (size_t i = 0; i < LENGTH_NAME_COMPANY; i++) 
-			{
-				if (i == 0 && temp == 0) 
-				{
-					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
-					fout << generated_name_company[i] << "";
-				}
-
-				else if (i > 0 && temp < 2) 
-				{
-					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
-					fout << generated_name_company[i] << "";
-					temp++;
-				}
-
-				else if (i > 0 && temp == 2) 
-				{
-					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
-					fout << generated_name_company[i] << "";
-					temp = 0;
-				}
-
-				else
-				{
-					continue;
-				}
-			}
-
-			temp = 0;
-			fout << "  |  ";
-
-			for (size_t i = 0; i < LENGTH_NAME_COMPANY; i++) 
-			{
-				if (i == 0 && temp == 0) 
-				{
-					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
-					fout << generated_name_company[i] << "";
-				}
-
-				else if (i > 0 && temp < 2) 
-				{
-					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
-					fout << generated_name_company[i] << "";
-					temp++;
-				}
-
-				else if (i > 0 && temp == 2) 
-				{
-					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
-					fout << generated_name_company[i] << "";
-					temp = 0;
-				}
-
-				else
-				{
-					continue;
-				}
-			}
-
-			fout << "  |  ";
-			temp = 0;
-
-			for (size_t i = 0; i < LENGTH_NAME_COMPANY - 4; i++) 
+			for (size_t i = 0; i < LENGTH_NAME_COMPANY - 4; i++) // THE 4th RULE: If the name company begins with a consonant letter + suffix "-soft"
 			{
 				if (i == LENGTH_NAME_COMPANY - 5)
 				{
@@ -196,20 +159,20 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i == 0 && temp == 0) 
+				else if (i == 0 && temp == 0) // any first consonant letter
 				{
-					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
+					generated_name_company[i] = toupper(english_alphabet_consonants[rand() % 6]);
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i > 0 && temp < 2) 
+				else if (i > 0 && temp < 2) // any 2 vowel letters
 				{
 					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
 					fout << generated_name_company[i] << "";
 					temp++;
 				}
 
-				else if (i > 0 && temp == 2) 
+				else if (i > 0 && temp == 2) // any consonant letter
 				{
 					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
 					fout << generated_name_company[i] << "";
@@ -225,7 +188,7 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 			fout << "soft  |  ";
 			temp = 0;
 
-			for (size_t i = 0; i < LENGTH_NAME_COMPANY - 4; i++) 
+			for (size_t i = 0; i < LENGTH_NAME_COMPANY - 4; i++) // THE 5th RULE: If the name company begins with a vowel letter + suffix "-soft"
 			{
 				if (i == LENGTH_NAME_COMPANY - 5)
 				{
@@ -233,26 +196,26 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i == 0 && temp == 0) 
+				else if (i == 0 && temp == 0) // any first vowel letter
 				{
-					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
+					generated_name_company[i] = toupper(english_alphabet_vowels[rand() % 20]);
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i == 1 && temp == 0) 
+				else if (i == 1 && temp == 0) // any second consonant letter
 				{
 					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i > 1 && temp < 2) 
+				else if (i > 1 && temp < 2) // any 2 vowels letters
 				{
 					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
 					fout << generated_name_company[i] << "";
 					temp++;
 				}
 
-				else if (i > 1 && temp == 2) 
+				else if (i > 1 && temp == 2) // any 1 consonant letter
 				{
 					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
 					fout << generated_name_company[i] << "";
@@ -266,8 +229,9 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 			}
 
 			fout << "soft | ";
+			temp = 0;
 
-			for (size_t i = 0; i < LENGTH_NAME_COMPANY - 4; i++) 
+			for (size_t i = 0; i < LENGTH_NAME_COMPANY - 4; i++) // THE 6th RULE: If the name company begins with a consonant letter + suffix "-ware"
 			{
 				if (i == LENGTH_NAME_COMPANY - 5)
 				{
@@ -275,20 +239,20 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i == 0 && temp == 0) 
+				else if (i == 0 && temp == 0) // any first consonant letter
 				{
-					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
+					generated_name_company[i] = toupper(english_alphabet_consonants[rand() % 6]);
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i > 0 && temp < 2) 
+				else if (i > 0 && temp < 2) // any 2 vowels letters
 				{
 					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
 					fout << generated_name_company[i] << "";
 					temp++;
 				}
 
-				else if (i > 0 && temp == 2) 
+				else if (i > 0 && temp == 2) // any 1 consonant letter
 				{
 					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
 					fout << generated_name_company[i] << "";
@@ -304,34 +268,34 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 			fout << "ware  |  ";
 			temp = 0;
 
-			for (size_t i = 0; i < LENGTH_NAME_COMPANY - 4; i++) // The sixth rule: Если начинается название с согласной + суффикс -ware
+			for (size_t i = 0; i < LENGTH_NAME_COMPANY - 4; i++) // THE 7th RULE: If the name company begins with a vowel letter + suffix "-ware"
 			{
 				if (i == LENGTH_NAME_COMPANY - 5)
 				{
-					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
+					generated_name_company[i] = english_alphabet_consonants[rand() % 6]; // any 1 consonant letter
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i == 0 && temp == 0) // first word (a vowel)
+				else if (i == 0 && temp == 0) // any first vowel letter
 				{
 					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i == 1 && temp == 0) // second word (a consonant)
+				else if (i == 1 && temp == 0) // any second consonant letter
 				{
 					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
 					fout << generated_name_company[i] << "";
 				}
 
-				else if (i > 1 && temp < 2) // 2 vowels
+				else if (i > 1 && temp < 2) // any 2 vowels letters
 				{
 					generated_name_company[i] = english_alphabet_vowels[rand() % 20];
 					fout << generated_name_company[i] << "";
 					temp++;
 				}
 
-				else if (i > 1 && temp == 2) // 1 consonant
+				else if (i > 1 && temp == 2) // any 1 consonant letter
 				{
 					generated_name_company[i] = english_alphabet_consonants[rand() % 6];
 					fout << generated_name_company[i] << "";
