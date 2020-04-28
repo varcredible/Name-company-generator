@@ -23,10 +23,9 @@
 using std::string;
 using std::ofstream;
 
-void startProcess(const int* length_name_company, const int* time_delay, ofstream& fout)
+void startProcess(const int* length_name_company, ofstream& fout)
 {
 	srand(time(NULL));
-	
 	char value = ' ';
 
 	char english_alphabet_consonants[6] =
@@ -309,30 +308,23 @@ void startProcess(const int* length_name_company, const int* time_delay, ofstrea
 		}
 
 		delete[] generated_name_company;
-		Sleep(*time_delay);
+		Sleep(1001); // time delay
 	}
 }
 
 
 void showMenu()
 {
-	using std::cout;
-	using std::cin;
-	using std::endl;
-
 	ofstream fout("NamesForCompany.txt", std::ios::app);
 	int length_name_company = 0;
-	int time_delay = 1001;
 	int* ptr_length_name_company = &length_name_company;
-	int* ptr_time_delay = &time_delay;
-	cout << "Enter a length the name company: ";
-	cin >> length_name_company;
-	cout << "\nThe program process started successfully.\nGeneration occurs once per second.\nUpload the file name is \"NamesForCompany.txt\".";
-	startProcess(ptr_length_name_company, ptr_time_delay, fout);
+	std::cout << "Enter a length the name company: ";
+	std::cin >> length_name_company;
+	std::cout << "\nThe program process started successfully.\nGeneration occurs once per second.\nUpload the file name is \"NamesForCompany.txt\".";
+	startProcess(ptr_length_name_company, fout);
 
 	fout.close();
 	delete ptr_length_name_company;
-	delete ptr_time_delay;
 }
 
 int main()
