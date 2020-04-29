@@ -23,7 +23,7 @@
 using std::string;
 using std::ofstream;
 
-void startProcess(const int* length_name_company, ofstream& fout)
+int startProcess(const int* length_name_company, ofstream& fout)
 {
 	srand(time(NULL));
 	char value = ' ';
@@ -310,10 +310,12 @@ void startProcess(const int* length_name_company, ofstream& fout)
 		delete[] generated_name_company;
 		Sleep(1001); // time delay
 	}
+	
+	return 0;
 }
 
 
-void showMenu()
+int showMenu()
 {
 	ofstream fout("NamesForCompany.txt", std::ios::app);
 	int length_name_company = 0;
@@ -325,6 +327,8 @@ void showMenu()
 
 	fout.close();
 	delete ptr_length_name_company;
+	
+	return 0;
 }
 
 int main()
