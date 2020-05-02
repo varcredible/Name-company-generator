@@ -5,7 +5,7 @@
 // The name of the program: Company Name Generator
 // Verison of the program: 1.1.4
 // Langauge: English
-// Autor: Zorin Stepan 
+// Autor: Zorin Stepan
 // Nickname: varcredible
 // Country: Russia
 // City: Moscow
@@ -22,6 +22,32 @@
 
 using std::string;
 using std::ofstream;
+
+int showMenu();
+int startProcess(const int* length_name_company, ofstream& fout);
+
+
+int main()
+{
+	showMenu();
+	return 0;
+}
+
+int showMenu()
+{
+	ofstream fout("NamesForCompany.txt", std::ios::app);
+	int length_name_company = 0;
+	int* ptr_length_name_company = &length_name_company;
+	std::cout << "Enter a length the name company: ";
+	std::cin >> length_name_company;
+	std::cout << "\nThe program process has started successfully.\nGeneration occurs once per second.\nNames are uploading to the file name is \"NamesForCompany.txt\".";
+	startProcess(ptr_length_name_company, fout);
+
+	fout.close();
+	delete ptr_length_name_company;
+
+	return 0;
+}
 
 int startProcess(const int* length_name_company, ofstream& fout)
 {
@@ -44,7 +70,7 @@ int startProcess(const int* length_name_company, ofstream& fout)
 	const int LENGTH_NAME_COMPANY = *length_name_company;
 
 	while (true)
-	{			
+	{
 		char* generated_name_company = new char[LENGTH_NAME_COMPANY];
 		int temp = 0;
 
@@ -310,29 +336,6 @@ int startProcess(const int* length_name_company, ofstream& fout)
 		delete[] generated_name_company;
 		Sleep(1001); // time delay
 	}
-	
-	return 0;
-}
 
-
-int showMenu()
-{
-	ofstream fout("NamesForCompany.txt", std::ios::app);
-	int length_name_company = 0;
-	int* ptr_length_name_company = &length_name_company;
-	std::cout << "Enter a length the name company: ";
-	std::cin >> length_name_company;
-	std::cout << "\nThe program process has started successfully.\nGeneration occurs once per second.\nNames are uploading to the file name is \"NamesForCompany.txt\".";
-	startProcess(ptr_length_name_company, fout);
-
-	fout.close();
-	delete ptr_length_name_company;
-	
-	return 0;
-}
-
-int main()
-{
-	showMenu();
 	return 0;
 }
